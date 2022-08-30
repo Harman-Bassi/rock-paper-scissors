@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let computerCounter = 0;
+        let playerCounter = 0;
+
+
+        function getComputerChoice(){
+            return Math.floor(Math.random()*3);
+        } 
+
+        function numberChoice(){
+            let choice = prompt("Rock, Paper, Scissor (Choose)").toLowerCase();
+            if (choice === "rock"){
+                return 0;
+            }else if(choice === "paper"){
+                return 1;
+            }else{
+                return 2;
+            }
+        }
+
+        function playRound(playerSelection, computerSelection){
+
+            if(playerSelection == 0 ){
+                if(computerSelection == 1){
+                    computerCounter++;
+                    return "You Lose! Paper beats Rock";
+                }else if(computerSelection == 2){
+                    playerCounter++;
+                    return "You Win! Rock beats Scissor";
+                }
+
+            }else if(playerSelection == 1 ){
+                if(computerSelection == 0){
+                    computerCounter++;
+                    return "You Win! Paper beats Rock";
+                }else if(computerSelection == 2){
+                    playerCounter++;
+                    return "You LOse! Scissor beats Rock";
+                }
+
+            }else if(playerSelection == 2 ){
+                if(computerSelection == 0){
+                    computerCounter++;
+                    return "You Lose! Rock beats Scissor";
+                }else if(computerSelection == 1){
+                    playerCounter++;
+                    return "You Win! Scissor beats Paper";
+                }
+
+            }else{
+                return "You Tied!";
+            }
+        }
+
+        function game(){
+            
+        }
+
+        
+    </script>
+</body>
+</html>
