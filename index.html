@@ -36,6 +36,8 @@
                 }else if(computerSelection == 2){
                     playerCounter++;
                     return "You Win! Rock beats Scissor";
+                }else{
+                    return "Tied"
                 }
 
             }else if(playerSelection == 1 ){
@@ -44,7 +46,9 @@
                     return "You Win! Paper beats Rock";
                 }else if(computerSelection == 2){
                     playerCounter++;
-                    return "You LOse! Scissor beats Rock";
+                    return "You Lose! Scissor beats Rock";
+                }else{
+                    return "Tied"
                 }
 
             }else if(playerSelection == 2 ){
@@ -54,15 +58,30 @@
                 }else if(computerSelection == 1){
                     playerCounter++;
                     return "You Win! Scissor beats Paper";
+                }else{
+                    return "Tied"
                 }
 
             }else{
-                return "You Tied!";
+                return "Please Enter a Option!"
             }
         }
 
         function game(){
-            
+            let roundWin;
+            for (let i = 0; i < 5; i++) {
+                roundWin = playRound(numberChoice(), getComputerChoice());
+                console.log(roundWin);
+            }
+
+            if (computerCounter > playerCounter){
+                console.log("Computer Wins");
+            }else if (computerCounter < playerCounter){
+                console.log("Player Wins");
+            }else{
+                console.log("Both Tied");
+            }
+
         }
 
         
