@@ -1,0 +1,63 @@
+body{
+    margin: 0;
+    background-color: #1F2937;
+    color: #F9FAF8;
+}
+
+.title{
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 70px;
+}
+
+
+.score{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 70px;
+}
+
+.player, .computer{
+    background-color: bisque;
+    padding:15px 10px;
+    border-width: 20px;
+    border-radius: 15px;
+    border-style: double;
+    
+}
+
+.roundWin, .winDis{
+    margin-top: 80px;
+    font-size: 35px;
+    text-align: center;
+}
+
+
+.playerOP{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 100px ;
+    margin-bottom: 50px;
+}
+
+.option{
+    background-color: bisque;
+    color: #F9FAF8;
+    border-color: #F9FAF8;
+    width: 175px;
+    height: 175px;
+    border-width: 20px;
+    border-style: double;
+    border-radius: 100px;  
+    font-size: 100px;  
+
+}
+
+
+
+
+
