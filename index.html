@@ -4,85 +4,125 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
+
+    <div class = "game">
+        <div class = "title">Rock Paper Scissors</div>
+        <div class="score">
+            <div class = "player" id = "playScore">0</div>
+            <div class = "computer" id = "compScore">0</div>
+        </div>
+        <div class = "roundWin" id = "roundDisplay">Good Luck!</div>
+        <div class = "playerOP">
+            <button class = "option" id = "0">R</button>
+            <button class = "option" id = "1">P</button>
+            <button class ="option" id = "2">S</button>
+        </div>
+        <div class = "winDis" id = winnerDisplay></div>
+
+    </div>
+    
     <script>
+
         let computerCounter = 0;
         let playerCounter = 0;
+        let gameOver = false;
 
+        const buttons = document.querySelectorAll("button");
+        const playerScore = document.querySelector('#playScore');
+        const compScore = document.querySelector('#compScore');
+        const roundDisplay = document.querySelector("#roundDisplay");
+        const winnerDisplay = document.querySelector("#winnerDisplay");
 
         function getComputerChoice(){
             return Math.floor(Math.random()*3);
         } 
 
-        function numberChoice(){
-            let choice = prompt("Rock, Paper, Scissor (Choose)").toLowerCase();
-            if (choice === "rock"){
-                return 0;
-            }else if(choice === "paper"){
-                return 1;
-            }else{
-                return 2;
-            }
-        }
 
-        function playRound(playerSelection, computerSelection){
-
+        function playRound(playerSelection){
+            console.log(playerSelection);
+            let display = "";
+            computerSelection = getComputerChoice();
             if(playerSelection == 0 ){
                 if(computerSelection == 1){
                     computerCounter++;
-                    return "You Lose! Paper beats Rock";
+                    display = "You Lose! Paper beats Rock";
                 }else if(computerSelection == 2){
                     playerCounter++;
-                    return "You Win! Rock beats Scissor";
+                    display = "You Win! Rock beats Scissor";
                 }else{
-                    return "Tied"
+                    display = "Tied";
                 }
 
             }else if(playerSelection == 1 ){
                 if(computerSelection == 0){
                     computerCounter++;
-                    return "You Win! Paper beats Rock";
+                    display = "You Win! Paper beats Rock";
                 }else if(computerSelection == 2){
                     playerCounter++;
-                    return "You Lose! Scissor beats Rock";
+                    display = "You Lose! Scissor beats Rock";
                 }else{
-                    return "Tied"
+                    display = "Tied";
                 }
 
             }else if(playerSelection == 2 ){
                 if(computerSelection == 0){
                     computerCounter++;
-                    return "You Lose! Rock beats Scissor";
+                    display = "You Lose! Rock beats Scissor";
                 }else if(computerSelection == 1){
                     playerCounter++;
-                    return "You Win! Scissor beats Paper";
+                    display = "You Win! Scissor beats Paper";
                 }else{
-                    return "Tied"
+                    display = "Tied";
                 }
 
             }else{
-                return "Please Enter a Option!"
+                display = "Please Enter a Option!";
             }
+
+
+            roundDisplay.innerHTML = display;
+            playerScore.innerHTML = playerCounter;
+            compScore.innerHTML = computerCounter;
+
+            checkWin();
         }
 
-        function game(){
-            let roundWin;
-            for (let i = 0; i < 5; i++) {
-                roundWin = playRound(numberChoice(), getComputerChoice());
-                console.log(roundWin);
-            }
+        function checkWin(){
+            if (computerCounter == 5 || playerCounter ==5){
+                let dislpay = "";
+                if (computerCounter > playerCounter){
+                    display  = "Computer Wins";
+                }else if (computerCounter < playerCounter){
+                    display ="Player Wins";
+                }else{
+                    display = "Both Tied";
+                } 
 
-            if (computerCounter > playerCounter){
-                console.log("Computer Wins");
-            }else if (computerCounter < playerCounter){
-                console.log("Player Wins");
-            }else{
-                console.log("Both Tied");
-            }
+                winnerDisplay.innerHTML = display;
+                
+                buttons.forEach((button) => {
 
+                    button.disabled = true;
+                });
+
+            }
+            
         }
+
+        buttons.forEach((button) => {
+
+            button.addEventListener('click',() => {
+                playRound(button.id);
+            });
+        });
+        
+
+        
+
 
         
     </script>
